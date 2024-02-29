@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.slider {
+  background: #fff;
+  color: #3498db;
+  font-size: 36px;
+  line-height: 100px;
+  position: relative;
+  text-align: center;
+}
+
+.slick-prev {
+  left: 15px;
+}
+
+.slick-next {
+  right: 30px;
+}
+
+.slick-prev, .slick-next {
+  position: absolute;
+  display: none;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid transparent;
+  /*border-radius: 50%;*/
+  outline: none;
+  z-index: 2;
+}
+
+.ui-state-default {
+  background: linear-gradient(360deg, #076BFF 0%, #007BFF 100%);
+  color: white;
+}
+
+.white-popup {
+  position: relative;
+  background: #FFF;
+  padding: 20px;
+  width: auto;
+  max-width: 500px;
+  margin: 10px auto;
+}
+
+
+.ui-icon {
+  position: absolute;
+  right: 10px;
+  top: 27px;
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+.ui-icon-triangle-1-s {
+  background-position: 0px -16px;
+}
+
+.ui-accordion .ui-accordion-header {
+  border: none;
+  outline: none;
+}
+
+.ui-accordion .ui-accordion-content {
+  border: none;
+}
+
+.slick-slide img {
+  max-width: 100%;
+}
+
+.invalid-feedback {
+  display: block !important;
+}
+
+input.ng-invalid.ng-dirty,
+input.ng-invalid.ng-touched {
+  border-color: red;
+}
+
+.loader-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.74);
+}
+
+.loader {
+  width: 150px;
+  height: 150px;
+  border: 10px solid white;
+  border-top: 10px solid #1657b0;
+  border-radius: 50%;
+  animation: load 2s linear infinite;
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Importing Bootstrap SCSS file. */
+@import 'bootstrap/scss/bootstrap';

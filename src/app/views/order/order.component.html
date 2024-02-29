@@ -1,0 +1,243 @@
+<section class="order mb-5">
+  <div class="container">
+    <div id="forSubmit" class="text-center mb-5">
+      <p class="fs-3 fw-semibold">Сделать заказ</p>
+    </div>
+    <form action="#" *ngIf="isSuccess" [formGroup]="infoForm" id="formActive" class="wow animate__pulse">
+      <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-12">
+          <label class="form-label w-100">
+            <div class="mb-1">Имя</div>
+            <input id="inputFirstName" formControlName="name" class="form-control" type="text">
+            <div class="invalid-feedback" *ngIf="infoForm.get('name')?.invalid
+            && (infoForm.get('name')?.dirty || infoForm.get('name')?.touched) && infoForm.get('name')?.errors?.['required']">
+              Имя является обязательным
+            </div>
+          </label>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <label class="form-label w-100">
+            <div class="mb-1">Фамилия</div>
+            <input id="inputLastName" formControlName="last_name" class="form-control" type="text">
+            <div *ngIf="infoForm.get('last_name')?.invalid
+            && (infoForm.get('last_name')?.dirty || infoForm.get('last_name')?.touched)">
+              <div class="invalid-feedback" *ngIf="infoForm.get('last_name')?.errors?.['required']">Фамилия является
+                обязательной
+              </div>
+              <div class="invalid-feedback" *ngIf="infoForm.get('last_name')?.errors?.['pattern']">Фамилия может
+                содержать только русские буквы
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="col-lg-2 col-md-6">
+          <label class="form-label w-100">
+            <div class="mb-1">Телефон</div>
+            <input id="inputTel" formControlName="phone" class="form-control" type="text">
+            <div *ngIf="infoForm.get('phone')?.invalid
+            && (infoForm.get('phone')?.dirty || infoForm.get('phone')?.touched)">
+              <div class="invalid-feedback" *ngIf="infoForm.get('phone')?.errors?.['required']">Телефон является
+                обязательным
+              </div>
+              <div class="invalid-feedback" *ngIf="infoForm.get('phone')?.errors?.['pattern']">Телефон может содержать
+                только + и 11 символов
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label w-100">
+            <div class="mb-1">Страна</div>
+            <input id="inputCountry" formControlName="country" class="form-control" type="text">
+            <div *ngIf="infoForm.get('country')?.invalid
+            && (infoForm.get('country')?.dirty || infoForm.get('country')?.touched)">
+              <div class="invalid-feedback" *ngIf="infoForm.get('country')?.errors?.['required']">Страна является
+                обязательной
+              </div>
+            </div>
+          </label>
+        </div>
+        <div class="col-lg-3 col-md-6">
+          <label class="form-label w-100">
+            <div class="mb-1">Индекс</div>
+            <input id="inputIndex" formControlName="zip" class="form-control" type="text">
+            <div *ngIf="infoForm.get('zip')?.invalid
+            && (infoForm.get('zip')?.dirty || infoForm.get('zip')?.touched)">
+              <div class="invalid-feedback" *ngIf="infoForm.get('zip')?.errors?.['required']">Индекс является
+                обязательным
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12">
+          <label class="form-label w-100">
+            <div class="mb-1">Адрес</div>
+            <input id="inputAddress" formControlName="address" class="form-control" type="text">
+            <div *ngIf="infoForm.get('address')?.invalid
+            && (infoForm.get('address')?.dirty || infoForm.get('address')?.touched)">
+              <div class="invalid-feedback" *ngIf="infoForm.get('address')?.errors?.['required']">Адрес является
+                обязательным
+              </div>
+              <div class="invalid-feedback" *ngIf="infoForm.get('address')?.errors?.['pattern']">Адрес может содержать
+                только русские буквы, цифры, -, / и пробел
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12">
+          <label class="form-label w-100">
+            <div class="mb-1">Товар</div>
+            <input id="inputProduct" formControlName="product" class="form-control" type="text">
+          </label>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-12">
+          <label class="form-label w-100">
+            <div class="mb-1">Комментарий к заказу (необязательно)</div>
+            <input id="inputComment" formControlName="comment" class="form-control" type="text">
+          </label>
+        </div>
+      </div>
+      <div class="row mt-2">
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col-1"></div>
+        <div class="col-lg-2 col-sm-6">
+          <button type="button" [disabled]="!infoForm.valid" #button id="buttonSubmit" (click)="createOrder(button)"
+                  class="btn btn-primary w-100 hvr-grow-shadow">Отправить
+          </button>
+          <div *ngIf="isError">Произошла ошибка. Попробуйте еще раз.</div>
+        </div>
+      </div>
+    </form>
+    <div class="text-center fw-bold" *ngIf="!isSuccess">Спасибо за заказ!</div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+<!--<div class="form p-4 mb-4 wow animate__backInLeft">-->
+<!--  <p class="text-center fw-bold fs-4 text-center mb-2">Сделать заказ</p>-->
+<!--  <form class="row g-3 col-lg-7 col-md-10 row-md-3 px-5 m-auto" *ngIf="isSuccess" [formGroup]="orderForm" id="formActive">-->
+
+<!--    <div class="col-md-4">-->
+<!--      <label for="inputName" class="form-label">Имя</label>-->
+<!--      <input type="text" class="form-control" id="inputName" formControlName="name">-->
+<!--      <div  class="row-md-4"-->
+<!--            *ngIf="name?.invalid && (name?.dirty || name?.touched)">-->
+<!--        <div class="text-danger" *ngIf="name?.errors?.['required']">-->
+<!--          Имя является обязательным.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="name?.errors?.['pattern']">-->
+<!--          Имя может содержать только русские буквы.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="col-md-4">-->
+<!--      <label for="inputPrename" class="form-label">Фамилия</label>-->
+<!--      <input type="text" class="form-control" id="inputPrename" formControlName="lastName">-->
+<!--      <div class="row-md-4"-->
+<!--           *ngIf="lastName?.invalid && (lastName?.dirty || lastName?.touched)">-->
+<!--        <div class="text-danger" *ngIf="lastName?.errors?.['required']">-->
+<!--          Фамилия является обязательной.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="lastName?.errors?.['pattern']">-->
+<!--          Фамилия может содержать только русские буквы.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="col-md-4">-->
+<!--      <label for="inputPhone" class="form-label">Телефон</label>-->
+<!--      <input type="text" class="form-control" id="inputPhone" formControlName="phone">-->
+<!--      <div class="row-md-4"-->
+<!--        *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">-->
+<!--        <div class="text-danger" *ngIf="phone?.errors?.['required']">-->
+<!--          Телефон является обязательным.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="phone?.errors?.['pattern']">-->
+<!--          Телефон может содержать-->
+<!--          только + и 11 символов.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+
+<!--    <div class="col-md">-->
+<!--      <label for="inputCountry" class="form-label">Страна</label>-->
+<!--      <input type="text" class="form-control" id="inputCountry" formControlName="country">-->
+<!--      <div class="row-md"-->
+<!--           *ngIf="country?.invalid && (country?.dirty || country?.touched)">-->
+<!--        <div class="text-danger" *ngIf="country?.errors?.['required']">-->
+<!--          Обязательное поле.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="country?.errors?.['pattern']">-->
+<!--          Может содержать только русские буквы.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-md">-->
+<!--      <label for="inputIndex" class="form-label">Индекс</label>-->
+<!--      <input type="text" class="form-control" id="inputIndex" formControlName="zip">-->
+<!--      <div class="row-md"-->
+<!--           *ngIf="zip?.invalid && (zip?.dirty || zip?.touched)">-->
+<!--        <div class="text-danger" *ngIf="zip?.errors?.['required']">-->
+<!--          Обязательное поле.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="zip?.errors?.['pattern']">-->
+<!--          Может содержать только цифры.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-md-12">-->
+<!--      <label for="inputOrder" class="form-label">Товар</label>-->
+<!--      <input type="text" class="form-control" id="inputOrder" formControlName="product">-->
+<!--    </div>-->
+
+<!--    <div class="col-12">-->
+<!--      <label for="inputAddress" class="form-label">Адрес</label>-->
+<!--      <input type="text" class="form-control" id="inputAddress" formControlName="address">-->
+<!--      <div class="row-12"-->
+<!--        *ngIf="address?.invalid && (address?.dirty || address?.touched)">-->
+<!--        <div class="text-danger" *ngIf="address?.errors?.['required']">-->
+<!--          Обязательное поле.-->
+<!--        </div>-->
+<!--        <div class="text-danger" *ngIf="address?.errors?.['pattern']">-->
+<!--          Адрес может содержать-->
+<!--          только русские буквы, цифры, -, / и пробел.-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-md-12">-->
+<!--      <label for="inputComment" class="form-label">Комментарий к заказу</label>-->
+<!--      <input type="text" class="form-control" id="inputComment" formControlName="comment">-->
+<!--    </div>-->
+
+<!--    <div class="col-12">-->
+<!--      <button type="button" [disabled]="!orderForm.valid" #button id="buttonSubmit" (click)="createOrder(button)"-->
+<!--              class="btn btn-primary ps-5 pe-5 pt-2 pb-2 hvr-back-pulse">Отправить-->
+<!--      </button>-->
+<!--      <div *ngIf="isError">Произошла ошибка. Попробуйте еще раз.</div>-->
+<!--    </div>-->
+<!--  </form>-->
+<!--  <div class="text-center fw-bold" *ngIf="!isSuccess">Спасибо за заказ!</div>-->
+<!--</div>-->

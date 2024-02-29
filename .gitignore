@@ -1,0 +1,9 @@
+/dist
+/node_modules
+/tmp
+/out-tsc
+/bazel-out
+npm-debug.log
+yarn-error.log
+.idea/
+.project

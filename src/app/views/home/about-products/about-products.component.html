@@ -1,0 +1,25 @@
+<div class="products">
+
+  <div *ngIf="product.image; then productImageBlock else defaultImageBlock"></div>
+
+  <ng-template #productImageBlock>
+    <div class="product-image">
+      <img src="{{product.image}}">
+    </div>
+  </ng-template>
+
+  <ng-template #defaultImageBlock>
+    <div class="product-image">
+      <img src="assets/images/image2.png">
+    </div>
+  </ng-template>
+
+  <h5 class="product-title">{{product.title}}</h5>
+  <p class="product-price">Стоимость: {{product.price}} р за 100г</p>
+  <p class="product-description">{{product.description}}</p>
+  <button class="product-button btn btn-primary hvr-back-pulse" [routerLink]="'/order'"
+          [queryParams]="{product: product.title}"
+  >Купить
+  </button>
+
+</div>

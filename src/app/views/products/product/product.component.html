@@ -1,0 +1,23 @@
+<div class="col wow animate__flipInY">
+<div class="card h-100">
+  <div *ngIf="product.image; then productImageBlock else defaultImageBlock"></div>
+
+  <ng-template #productImageBlock>
+    <div class="product-image card-img-top">
+      <img src="{{product.image}}">
+    </div>
+  </ng-template>
+
+  <ng-template #defaultImageBlock>
+    <div class="product-image card-img-top">
+      <img src="assets/images/image2.png">
+    </div>
+  </ng-template>
+
+  <div class="card-body">
+    <h5 class="card-title">{{product.title}}</h5>
+    <p class="card-text product-description">{{product.description}}</p>
+  </div>
+  <button class="btn btn-primary w-50 ms-3 mb-3 hvr-back-pulse" [routerLink]="['/products', product.id]">Подробнее</button>
+</div>
+</div>
